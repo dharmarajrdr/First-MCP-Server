@@ -13,7 +13,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
+    <java.version>21</java.version>
+    <spring-ai.version>1.0.1</spring-ai.version>
   </properties>
 
   <dependencyManagement>
@@ -31,6 +33,13 @@
       <version>1.18.32</version>
       <scope>provided</scope>
     </dependency>
+        <dependency>
+          <groupId>org.springframework.ai</groupId>
+          <artifactId>spring-ai-bom</artifactId>
+          <version>${spring-ai.version}</version>
+          <type>pom</type>
+          <scope>import</scope>
+        </dependency>
   </dependencies>
   </dependencyManagement>
 
@@ -46,11 +55,21 @@
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
-      <dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.32</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+      <version>3.3.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.ai</groupId>
+      <artifactId>spring-ai-starter-mcp-server</artifactId>
+      <version>1.0.1</version>
     </dependency>
   </dependencies>
 
@@ -99,4 +118,23 @@
       </plugins>
     </pluginManagement>
   </build>
+  
+  <repositories>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
 </project>
